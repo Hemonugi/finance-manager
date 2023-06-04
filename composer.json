@@ -1,0 +1,19 @@
+{
+    "name": "hemonugi/finance-manager",
+    "description": "Simple finance manager pet project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Hemonugi\\FinanceManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hemonugi",
+            "email": "hemonugi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "8.2.*"
+    }
+}
