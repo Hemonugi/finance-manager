@@ -14,6 +14,10 @@
         }
     ],
     "require": {
-        "php": "8.2.*"
+        "php": "8.2.*",
+        "ext-zip": "*",
+        "slim/slim": "4.*",
+        "slim/psr7": "*",
+        "middlewares/trailing-slash": "*"
     }
 }
