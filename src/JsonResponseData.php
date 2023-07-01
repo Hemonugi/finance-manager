@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Hemonugi\FinanceManager;
 
+use JsonException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -11,15 +12,17 @@ use Psr\Http\Message\ResponseInterface;
  */
 class JsonResponseData
 {
-
     private mixed $data;
-    private bool $success;
+    private bool $success = true;
     private ?string $message;
 
-    public function __construct(mixed $data, bool $success = true, ?string $message = null)
+    /**
+     * @param mixed $data
+     * @param string|null $message
+     */
+    public function __construct(mixed $data, ?string $message = null)
     {
         $this->data = $data;
-        $this->success = $success;
         $this->message = $message;
     }
 
@@ -56,13 +59,21 @@ class JsonResponseData
         return $this;
     }
 
+    /**
+     * Возвращает ответ в единообразном формате json
+     *
+     * @throws JsonException в случае если произошла ошибка при формировании JSON
+     */
     public function send(ResponseInterface $response): ResponseInterface
     {
-        $response->getBody()->write(json_encode([
-            'success' => $this->success,
-            'message' => $this->message,
-            'data' => $this->data,
-        ]));
+        $response->getBody()->write(
+            json_encode([
+                'success' => $this->success,
+                'message' => $this->message,
+                'data' => $this->data,
+            ], JSON_THROW_ON_ERROR)
+        );
+
         return $response->withHeader('Content-Type', 'application/json');
     }
 }
