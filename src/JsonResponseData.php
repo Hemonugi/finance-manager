@@ -20,7 +20,7 @@ class JsonResponseData
      * @param mixed $data
      * @param string|null $message
      */
-    public function __construct(mixed $data, ?string $message = null)
+    public function __construct(mixed $data = [], ?string $message = null)
     {
         $this->data = $data;
         $this->message = $message;

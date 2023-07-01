@@ -4,7 +4,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Hemonugi\\FinanceManager\\": "src/"
+            "Hemonugi\\FinanceManager\\": "src/",
+            "Hemonugi\\FinanceManager\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -25,7 +26,8 @@
         "squizlabs/php_codesniffer": "*",
         "phpstan/phpstan-strict-rules": "^1.5",
         "slevomat/coding-standard": "^8.13",
-        "phpmd/phpmd": "^2.13"
+        "phpmd/phpmd": "^2.13",
+        "phpunit/phpunit": "^10.2"
     },
     "config": {
         "allow-plugins": {
