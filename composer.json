@@ -19,7 +19,8 @@
         "ext-zip": "*",
         "slim/slim": "4.*",
         "slim/psr7": "*",
-        "middlewares/trailing-slash": "*"
+        "middlewares/trailing-slash": "*",
+        "zircote/swagger-php": "^4.7"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",
