@@ -17,9 +17,9 @@ services:
         volumes:
             - ./:/var/www/finance-manager
         links:
-            - db
+            - database
 
-    db:
+    database:
         image: postgres
         ports:
             - ${DATABASE_HOST_PORT}:5432
