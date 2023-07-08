@@ -7,7 +7,6 @@ namespace Hemonugi\FinanceManager\Account;
 use Hemonugi\FinanceManager\JsonResponseData;
 use JsonException;
 use OpenApi\Attributes as OA;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class AccountController
@@ -19,13 +18,11 @@ class AccountController
         ]
     )]
     /**
-     * @param RequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface
      * @throws JsonException
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function balance(RequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function balance(ResponseInterface $response): ResponseInterface
     {
         $data = new AccountDto(1000);
 

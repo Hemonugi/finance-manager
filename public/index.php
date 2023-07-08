@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
+use DI\Bridge\Slim\Bridge;
 use Hemonugi\FinanceManager\Account\AccountController;
 use Hemonugi\FinanceManager\Swagger\SwaggerController;
 use Middlewares\TrailingSlash;
-use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = AppFactory::create();
+$app = Bridge::create();
 $app->add((new TrailingSlash(true))->redirect());
 
-$app->get('/api/doc/config/', [new SwaggerController(), 'config']);
-$app->get('/api/doc/', [new SwaggerController(), 'view']);
-$app->get('/api/account/', [new AccountController(), 'balance']);
+$app->get('/api/doc/config/', [SwaggerController::class, 'config']);
+$app->get('/api/doc/', [SwaggerController::class, 'view']);
+$app->get('/api/account/', [AccountController::class, 'balance']);
 
 $app->addErrorMiddleware(true, true, true);
 

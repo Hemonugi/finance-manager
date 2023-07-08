@@ -6,7 +6,6 @@ namespace Hemonugi\FinanceManager\Swagger;
 
 use Exception;
 use OpenApi\Generator;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use OpenApi\Attributes as OA;
 
@@ -15,14 +14,12 @@ class SwaggerController
 {
     /**
      * Генерирует доки отдает конфиг для свагера
-     * @param RequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @SuppressWarnings(PHPMD.StaticAccess)
      * @throws Exception если не удалось создать конфиг
      */
-    public function config(RequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function config(ResponseInterface $response): ResponseInterface
     {
         $openapi = Generator::scan([__DIR__ . '/../']);
         if ($openapi === null) {
@@ -36,12 +33,11 @@ class SwaggerController
 
     /**
      * Выводит документацию свагера
-     * @param RequestInterface $request
      * @param ResponseInterface $response
      * @return ResponseInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function view(RequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function view(ResponseInterface $response): ResponseInterface
     {
         $viewFile = file_get_contents(__DIR__ . '/view.html');
         $response->getBody()->write($viewFile !== false ? $viewFile : '');
