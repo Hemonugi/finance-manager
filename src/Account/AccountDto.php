@@ -6,9 +6,9 @@ namespace Hemonugi\FinanceManager\Account;
 
 use JsonSerializable;
 
-readonly class AccountDto implements JsonSerializable
+readonly final class AccountDto implements JsonSerializable
 {
-    public function __construct(public int $value)
+    public function __construct(public float $value)
     {
     }
 

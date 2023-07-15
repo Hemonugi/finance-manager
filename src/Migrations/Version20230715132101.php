@@ -23,7 +23,7 @@ final class Version20230715132101 extends AbstractMigration
                     constraint transactions_pk
                         primary key,
                 description varchar(255)                        not null,
-                value       double precision                    not null,
+                value       numeric                             not null,
                 created_at  timestamp default CURRENT_TIMESTAMP not null,
                 updated_at  timestamp default CURRENT_TIMESTAMP not null
             );

@@ -17,6 +17,7 @@
     "require": {
         "php": "8.2.*",
         "ext-zip": "*",
+        "ext-pdo": "*",
         "slim/slim": "4.*",
         "slim/psr7": "*",
         "middlewares/trailing-slash": "*",

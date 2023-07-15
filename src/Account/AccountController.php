@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace Hemonugi\FinanceManager\Account;
 
+use Hemonugi\FinanceManager\Database;
 use Hemonugi\FinanceManager\JsonResponseData;
 use JsonException;
 use OpenApi\Attributes as OA;
 use Psr\Http\Message\ResponseInterface;
 
-class AccountController
+readonly final class AccountController
 {
+    public function __construct(private Database $database)
+    {
+    }
+
     #[OA\Get(
         path: '/api/account',
         responses: [
@@ -24,8 +29,9 @@ class AccountController
      */
     public function balance(ResponseInterface $response): ResponseInterface
     {
-        $data = new AccountDto(1000);
+        $sum = (float)$this->database->queryScalar('SELECT SUM(value) FROM transactions');
+        $result = new AccountDto($sum);
 
-        return (new JsonResponseData($data))->send($response);
+        return (new JsonResponseData($result))->send($response);
     }
 }
