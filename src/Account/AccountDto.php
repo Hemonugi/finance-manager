@@ -6,10 +6,15 @@ namespace Hemonugi\FinanceManager\Account;
 
 use JsonSerializable;
 
+use OpenApi\Attributes as OA;
+
+#[OA\Schema(title: 'Account')]
 readonly final class AccountDto implements JsonSerializable
 {
-    public function __construct(public float $value)
-    {
+    public function __construct(
+        #[OA\Property]
+        public float $value
+    ) {
     }
 
     /**

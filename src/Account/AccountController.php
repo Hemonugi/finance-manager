@@ -6,6 +6,7 @@ namespace Hemonugi\FinanceManager\Account;
 
 use Hemonugi\FinanceManager\Database;
 use Hemonugi\FinanceManager\JsonResponseData;
+use Hemonugi\FinanceManager\Swagger\JsonResponse;
 use JsonException;
 use OpenApi\Attributes as OA;
 use Psr\Http\Message\ResponseInterface;
@@ -16,12 +17,8 @@ readonly final class AccountController
     {
     }
 
-    #[OA\Get(
-        path: '/api/account',
-        responses: [
-            new OA\Response(response: 200, description: 'Successful response')
-        ]
-    )]
+    #[OA\Get(path: '/api/account', description: 'Возвращает информацию о балансе пользователя')]
+    #[OA\Response(response: 200, description: 'Успешный запрос', content: new JsonResponse('AccountDto'))]
     /**
      * @param ResponseInterface $response
      * @return ResponseInterface
