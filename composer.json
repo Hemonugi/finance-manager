@@ -30,7 +30,8 @@
         "phpstan/phpstan-strict-rules": "^1.5",
         "slevomat/coding-standard": "^8.13",
         "phpmd/phpmd": "^2.13",
-        "phpunit/phpunit": "^10.2"
+        "phpunit/phpunit": "^10.2",
+        "doctrine/migrations": "^3.6"
     },
     "config": {
         "allow-plugins": {
