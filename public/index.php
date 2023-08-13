@@ -39,6 +39,7 @@ $app->get('/api/doc/config/', [SwaggerController::class, 'config']);
 $app->get('/api/doc/', [SwaggerController::class, 'view']);
 $app->get('/api/account/', [AccountController::class, 'balance']);
 $app->get('/api/transactions/', [TransactionController::class, 'list']);
+$app->post('/api/transactions/add/', [TransactionController::class, 'add']);
 
 $app->addErrorMiddleware(true, true, true);
 
