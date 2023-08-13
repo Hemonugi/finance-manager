@@ -11,9 +11,24 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-for="transaction in transactions" :key="transaction.id">
-        <div>{{ transaction.description }}: {{ transaction.value }}</div>
+    <div class="transactions">
+        <div class="transaction" v-for="transaction in transactions" :key="transaction.id">
+            <div class="transaction__description">
+                {{ transaction.description }}
+            </div>
+            <div class="transaction__value">
+                {{ transaction.value }}
+            </div>
+        </div>
     </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px dotted    var(--border-color);
+}
+</style>

@@ -1,0 +1,17 @@
+@import "reset.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --border-color: black;
+    --text-color: black;
+}
+
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    color: var(--text-color);
+}
