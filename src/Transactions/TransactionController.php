@@ -31,7 +31,7 @@ readonly final class TransactionController
      */
     public function list(ResponseInterface $response): ResponseInterface
     {
-        $transactionList = $this->database->queryAll('SELECT * FROM transactions');
+        $transactionList = $this->database->queryAll('SELECT * FROM transactions ORDER BY created_at DESC ');
 
         $transactions = array_map(
             fn(array $transaction) => TransactionDto::createFromDatabaseRow($transaction),
