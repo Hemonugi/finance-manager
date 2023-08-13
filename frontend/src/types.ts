@@ -30,3 +30,15 @@ export interface Transaction {
      */
     updatedAt: Date
 }
+
+
+export interface AddTransactionDto {
+    /**
+     * Краткое описание транзакции
+     */
+    description: string
+    /**
+     * Сумма транзакции
+     */
+    value: number
+}

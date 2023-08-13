@@ -1,4 +1,5 @@
-import type { Account, Transaction } from '@/types'
+import type { Account, Transaction, AddTransactionDto } from '@/types'
+import { Exception } from 'sass'
 
 class Api {
     private baseApiUrl: string
@@ -37,6 +38,30 @@ class Api {
                 }
 
                 alert(data.message)
+            })
+    }
+
+    addTransaction(transactionDto: AddTransactionDto): Promise<Transaction> {
+        return fetch(this.baseApiUrl + '/transactions/add/', {
+            method: "POST",
+            body: JSON.stringify(transactionDto)
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    const transactionViewDto = data.data;
+                    return {
+                        id: transactionViewDto.id,
+                        description: transactionViewDto.description,
+                        value: transactionViewDto.value,
+                        createdAt: new Date(transactionViewDto.createdAt),
+                        updatedAt: new Date(transactionViewDto.updatedAt),
+                    };
+                }
+
+                alert(data.message);
+
+                throw new Error('Add transaction failed');
             })
     }
 }
