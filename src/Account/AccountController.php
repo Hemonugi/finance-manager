@@ -18,7 +18,7 @@ readonly final class AccountController
     }
 
     #[OA\Get(path: '/api/account', description: 'Возвращает информацию о балансе пользователя')]
-    #[OA\Response(response: 200, description: 'Успешный запрос', content: new JsonResponse('AccountDto'))]
+    #[OA\Response(response: 200, description: 'Успешный запрос', content: new JsonResponse(AccountDto::class))]
     /**
      * @param ResponseInterface $response
      * @return ResponseInterface

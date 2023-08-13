@@ -15,7 +15,7 @@ readonly final class Database
     /**
      * @param string $query
      * @param string[]|int[]|float[] $params
-     * @return string[]
+     * @return string[][]
      */
     public function queryAll(string $query, array $params = []): array
     {

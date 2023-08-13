@@ -7,6 +7,7 @@ use DI\ContainerBuilder;
 use Hemonugi\FinanceManager\Account\AccountController;
 use Hemonugi\FinanceManager\Database;
 use Hemonugi\FinanceManager\Swagger\SwaggerController;
+use Hemonugi\FinanceManager\Transactions\TransactionController;
 use Middlewares\TrailingSlash;
 use Psr\Container\ContainerInterface;
 
@@ -37,6 +38,7 @@ $app->add((new TrailingSlash(true))->redirect());
 $app->get('/api/doc/config/', [SwaggerController::class, 'config']);
 $app->get('/api/doc/', [SwaggerController::class, 'view']);
 $app->get('/api/account/', [AccountController::class, 'balance']);
+$app->get('/api/transactions/', [TransactionController::class, 'list']);
 
 $app->addErrorMiddleware(true, true, true);
 
