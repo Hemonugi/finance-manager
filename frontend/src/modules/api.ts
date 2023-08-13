@@ -1,4 +1,4 @@
-import type { Account } from '@/types'
+import type { Account, Transaction } from '@/types'
 
 class Api {
     private baseApiUrl: string
@@ -18,7 +18,25 @@ class Api {
                     return data.data
                 }
 
-                alert(data.message);
+                alert(data.message)
+            })
+    }
+
+    getTransactions(): Promise<Transaction[]> {
+        return fetch(this.baseApiUrl + '/transactions/')
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    return data.data.map((transaction: any) => ({
+                        id: transaction.id,
+                        description: transaction.description,
+                        value: transaction.value,
+                        createdAt: new Date(transaction.createdAt),
+                        updatedAt: new Date(transaction.updatedAt),
+                    }));
+                }
+
+                alert(data.message)
             })
     }
 }
