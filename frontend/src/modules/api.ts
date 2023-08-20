@@ -1,5 +1,4 @@
 import type { Account, Transaction, AddTransactionDto } from '@/types'
-import { Exception } from 'sass'
 
 class Api {
     private baseApiUrl: string
@@ -66,4 +65,4 @@ class Api {
     }
 }
 
-export const api = new Api('http://localhost:8083/api')
+export const api = new Api(import.meta.env.VITE_API_HOST + '/api')
