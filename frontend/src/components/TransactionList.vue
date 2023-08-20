@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { api } from '@/modules/api'
-import { Transaction } from '@/types'
+import type { Transaction } from '@/types'
 import AddTransactionForm from '@/components/AddTransactionForm.vue'
 
 const transactions = ref<Transaction[]>([])

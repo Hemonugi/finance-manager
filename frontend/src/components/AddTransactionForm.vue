@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { AddTransactionDto, Transaction } from '@/types'
+import type { AddTransactionDto, Transaction } from '@/types'
 import { api } from '@/modules/api'
 
 const emit = defineEmits<{
-    addTransaction: Transaction
+    addTransaction: [transaction: Transaction]
 }>()
 
 const newTransaction = ref<AddTransactionDto>({
@@ -36,7 +36,7 @@ function addTransaction() {
         <input v-model="newTransaction.description" />
         <input v-model="newTransaction.value" />
         <button>Добавить</button>
-        <button @click='showForm = false'>Отмена</button>
+        <button @click="showForm = false">Отмена</button>
     </form>
 </template>
 
